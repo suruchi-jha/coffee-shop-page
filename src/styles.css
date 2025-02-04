@@ -1,0 +1,329 @@
+/******************** Font **************************/
+
+h2 {
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+  font-size: 3rem;
+}
+
+h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+}
+
+.cite-font {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+}
+
+.cite-font-big{
+  font-family: 'Playfair Display', serif;
+  font-size:7rem;
+  text-align: center;
+  position:relative;
+  bottom:30px;
+}
+
+.cite-font-lg {
+  font-family: 'Playfair Display', serif;
+  font-size:5rem;
+  text-align: center;
+  position:relative;
+  bottom:30px;
+}
+
+.cite-font-mid {
+  font-family: 'Playfair Display', serif;
+  font-size:3rem;
+  text-align: center;
+  position:relative;
+  bottom:70px;
+}
+
+.content-font {
+  font-family: 'Source Sans Pro', sans-serif;
+  text-align: justify;
+}
+
+.square-font-big {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 4rem;
+}
+
+.cursive-font{
+  font-family: 'Herr Von Muellerhoff', cursive;
+  font-size: 6rem;
+  text-align: center;
+  color: #A64B2A;
+}
+.cursive-font-big {
+  font-family: 'Herr Von Muellerhoff', cursive;
+  font-size: 8rem;
+  text-align: center;
+  color: #A64B2A;
+}
+
+
+/******************** Position **************************/
+.move-up {
+  position:relative;
+  bottom: 60px;
+}
+.move-up-up {
+  position:relative;
+  bottom: 80px;
+}
+.move-up-lit {
+  position:relative;
+  bottom: 50px;
+}
+
+.hover-yellow:hover {
+  color: yellow;
+}
+
+.navbar {
+  transition: background-color 0.4s ease, backdrop-filter 0.4s ease;
+  background-color: rgba(255, 255, 255, 0.2); 
+  backdrop-filter: blur(10px); 
+  padding: 15px 20px;
+  box-shadow: none;
+  z-index: 1000;
+}
+
+.navbar.scrolled {
+  background-color: rgba(255, 255, 255, 0.9); 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar a {
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.navbar.scrolled a {
+  color: #333; /* Darker text after scroll */
+}
+.nav-item:hover {
+  text-decoration-color: #6b4f4f;
+}
+
+/******************** Parallax effect **************************/
+.parallax {
+  /* The image used */
+  background-image: url("https://muertoscoffeeco.com/cdn/shop/articles/Why-Roast-Coffee-scaled_1000x.jpg?v=1592234291");
+
+  /* Set a specific height */
+  min-height: 100vh;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.align-right {
+  text-align:right;
+}
+.padding-right {
+  margin-right: 30px
+}
+.vl {
+  border-left: 30px solid #F8ECD1;
+  height: 100%;
+  font-weight: bold;
+}
+
+/******************** Container **************************/
+.top-container {
+  padding-top: 70px;
+}
+/******login******/
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+.auth-container form {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+}
+.auth-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #6f4e37;
+  font-weight: bold;
+}
+.auth-container .form-control {
+  border-radius: 8px;
+  padding: 12px;
+  transition: all 0.3s ease;
+}
+.auth-container .form-control:focus {
+  border-color: #8b5e34;
+  box-shadow: 0 0 5px rgba(139, 94, 52, 0.5);
+  outline: none;
+}
+.auth-container .btn-primary {
+  background-color: #8b5e34;
+  border: none;
+  padding: 12px;
+  width: 100%;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+.auth-container .btn-primary:hover {
+  background-color: #6b4f4f;
+}
+.auth-container p {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+}
+.auth-container a {
+  color: #A64B2A;
+  text-decoration: none;
+  font-weight: bold;
+}
+.auth-container a:hover {
+  text-decoration: underline;
+}
+
+
+/**********forms**********/
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Full-screen height */
+  background-color: #f4f4f4; /* Soft background */
+  padding: 20px;
+}
+
+form{
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  max-width: 1000px;
+  width: 100%;
+}
+
+.form-label {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.form-control {
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  padding: 12px;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #8b5e34;
+  box-shadow: 0 0 5px rgba(139, 94, 52, 0.5);
+  outline: none;
+}
+
+.btn-primary {
+  background-color: #8b5e34;
+  border: none;
+  padding: 12px;
+  width: 100%;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #6b4f4f;
+}
+
+/* Link styling */
+p {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+a {
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a:hover {
+  text-decoration-color: #333;
+}
+
+/******************** Buttons **************************/
+.btn {
+  -webkit-border-radius: 8;
+  -moz-border-radius: 8;
+  border-radius: 5px;
+  color: #ffffff;
+  font-size: 1rem;
+  background: #A64B2A;
+  padding: 5px 15px 5px 15px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #E6B325;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.align-center {
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
+
+.menu-list-title {
+  text-align: left;
+}
+
+.image-col {
+  align-self: center;
+}
+ul {
+  list-style-type: none;
+  padding-left: 0
+}
+
+li {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.list-item {
+  align-items: flex-start;
+}
+
+/******************** Bootstrap 5 Modify **************************/
+.navbar {
+  padding: 0;
+}
+
+/******************** Laptop User **************************/
+@media screen and (min-width: 992px){
+  .top-container,
+  .middle-container,
+  .bottom-container {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+}
