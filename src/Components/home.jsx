@@ -3,7 +3,10 @@ import React from "react"
 const Home= () => {
   return (
     <>
-      <div className="parallax"></div>
+      <div id="main-image" className="parallax">
+        <h1 className="main-title">Roasted Rituals Cafe</h1>
+        <h3 className="tag-line">Relax. Refresh. Rejuvinate.</h3>
+      </div>
       <div id="home" className="container-lg top-container">
         <div className="row">
           <div className="col-lg-6">

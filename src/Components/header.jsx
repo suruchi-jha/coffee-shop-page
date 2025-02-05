@@ -3,34 +3,45 @@ import { HashLink } from "react-router-hash-link"
 import { useAuth } from "../context/AuthContext"
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"
+import { useLocation } from "react-router-dom";
 
 
 function Header () {
   const { user, logout } = useAuth()
   const navigate = useNavigate()
+  const location = useLocation(); 
   const [scrolled, setScrolled] = useState(false);
+  const [showTitle, setShowTitle] = useState(false);
 
   const handleLogout = () => {
     logout()
     navigate("/")
-  }
-  useEffect(() => {
-    const handleScroll = () => {
+    }
+    useEffect(() => {
+      const handleScroll = () => {
       const offset = window.scrollY;
-      setScrolled(offset > 100); // Trigger effect after 50px scroll
+      setScrolled(offset > 700);
+      const mainImage = document.getElementById('main-image');
+      const mainImageHeight = mainImage ? mainImage.offsetHeight : 0;
+      setShowTitle(window.scrollY > mainImageHeight); // Trigger effect after 50px scroll
     };
 
     window.addEventListener("scroll", handleScroll);
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const isAuthPage = location.pathname === "/login" || location.pathname === "/signup";
+
   return (
     <header>
-      <nav className={`navbar fixed-top navbar-expand-lg ${scrolled ? "scrolled" : "transparent"}`}>
+      <nav className={`navbar fixed-top navbar-expand-lg ${scrolled ? "scrolled" : "transparent"} ${isAuthPage ? "auth-navbar" : ""}`}>
         <div className="container-fluid">
+        {(showTitle || isAuthPage) && (
           <HashLink smooth className="navbar-brand cite-font" to="/#home">
             Roasted Rituals Café
           </HashLink>
+        )}
           <button
             className="navbar-toggler"
             type="button"
