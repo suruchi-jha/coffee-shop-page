@@ -75,7 +75,7 @@ function Order () {
           <a href="#login" className="btn btn-secondary">
             Login
           </a>
-          <p>or</p>
+          <p> or </p>
           <a href="#signup" className="btn btn-secondary">
             Sign Up
           </a>
