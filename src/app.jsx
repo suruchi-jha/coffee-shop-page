@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
+import { AuthProvider } from "./context/AuthContext"
 import Header from "./Components/header"
 import Home from "./Components/home"
 import Menu from "./Components/menu"
@@ -20,6 +21,7 @@ const MainContent = () => (
 
 const App = () => {
   return (
+    <AuthProvider>
     <Router>
       <div className="App">
         <Header />
@@ -31,6 +33,7 @@ const App = () => {
         <Footer />
       </div>
     </Router>
+    </AuthProvider>
   )
 }
 

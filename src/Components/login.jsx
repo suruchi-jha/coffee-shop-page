@@ -1,19 +1,48 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
+import { useAuth } from "../context/AuthContext"
+import { useNavigate } from "react-router-dom"
 
-const Login = () => {
+function Login() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [error, setError] = useState("")
+  const navigate = useNavigate()
+  const { login } = useAuth()
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Here you would typically send a request to your backend to authenticate the user
-    console.log("Login attempt with:", email, password)
+    setError('');
+
+    try {
+      // Here you would typically make an API call to your backend
+      const response = await fetch("http://localhost:5000/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        login(data)
+        navigate("/")
+        // Scroll to top after successful login
+        window.scrollTo(0, 0)
+      } else {
+        setError(data.message || "Login failed")
+      }
+    } catch (err) {
+      setError("An error occurred during login")
+    }
   }
 
   return (
     <div className="auth-container">
       <h2>Login</h2>
+      {error && <div className="alert alert-danger">{error}</div>}
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="email" className="form-label">

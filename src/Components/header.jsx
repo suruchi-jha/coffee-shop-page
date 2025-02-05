@@ -1,14 +1,23 @@
 import { Link } from "react-router-dom"
 import { HashLink } from "react-router-hash-link"
+import { useAuth } from "../context/AuthContext"
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"
 
-const Header = () => {
+
+function Header () {
+  const { user, logout } = useAuth()
+  const navigate = useNavigate()
   const [scrolled, setScrolled] = useState(false);
 
+  const handleLogout = () => {
+    logout()
+    navigate("/")
+  }
   useEffect(() => {
     const handleScroll = () => {
       const offset = window.scrollY;
-      setScrolled(offset > 50); // Trigger effect after 50px scroll
+      setScrolled(offset > 100); // Trigger effect after 50px scroll
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -55,6 +64,19 @@ const Header = () => {
                   Contact
                 </HashLink>
               </li>
+              {user ? (
+                <>
+                  <li className="nav-item px-3">
+                    <span className="nav-link">Welcome, {user.name}</span>
+                  </li>
+                  <li className="nav-item px-3">
+                    <button className="nav-link btn btn-link" onClick={logout}>
+                      Logout
+                    </button>
+                  </li>
+                </>
+              ) : (
+                <>
               <li className="nav-item px-3">
                 <Link className="nav-link" to="/login" data-full-text="LOGIN">
                   Login
@@ -65,6 +87,8 @@ const Header = () => {
                   Sign Up
                 </Link>
               </li>
+              </>
+              )}
               {/* ... social media links ... */}
             </ul>
           </div>

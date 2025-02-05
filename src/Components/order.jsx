@@ -1,7 +1,9 @@
 import React from "react"
 import { useState } from "react"
+import { useAuth } from "../context/AuthContext"
 
-const Order = () => {
+
+function Order () {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -17,10 +19,68 @@ const Order = () => {
     vegan: ["Vegan Brownie", "Almond Milk Latte", "Vegan Croissant"],
   };
 
-  const handleSubmit = (e) => {
+  const { user } = useAuth()
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    category: "",
+    items: [],
+    quantity: 1,
+    notes: "",
+  })
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Here you would typically send the order to your backend
-    console.log("Order submitted:", { name, email, phone, category, items, quantity, notes })
+    if (!user) {
+      // Scroll to login section if user is not authenticated
+      document.getElementById("login").scrollIntoView({ behavior: "smooth" })
+      return
+    }
+
+    // Handle order submission
+    try {
+      const response = await fetch("http://localhost:5000/api/orders", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user.token}`,
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (response.ok) {
+        alert("Order placed successfully!")
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          category: "",
+          items: [],
+          quantity: 1,
+          notes: "",
+        })
+      }
+    } catch (error) {
+      console.error("Error placing order:", error)
+    }
+  }
+
+  if (!user) {
+    return (
+      <section id="order" className="container-lg order-container py-5">
+        <div className="text-center">
+          <h2>Place Your Order</h2>
+          <p>Please login or sign up to place an order.</p>
+          <a href="#login" className="btn btn-secondary">
+            Login
+          </a>
+          <a href="#signup" className="btn btn-secondary">
+            Sign Up
+          </a>
+        </div>
+      </section>
+    )
   }
 
   return (

@@ -1,20 +1,67 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
+import { useAuth } from "../context/AuthContext"
+import { useNavigate } from "react-router-dom"
 
-const Signup = () => {
-  const [name, setName] = useState("")
+function Signup() {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [confirmPassword, setConfirmPassword] = useState("")
+  const [error, setError] = useState("")
+  const [success, setSuccess] = useState(false)
+  const navigate = useNavigate()
+  const { login } = useAuth()
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Here you would typically send a request to your backend to register the user
-    console.log("Signup attempt with:", name, email, password)
+    setError("")
+    setSuccess(false)
+
+    if (password !== confirmPassword) {
+      setError("Passwords do not match")
+      return
+    }
+
+    try {
+      // Here you would typically make an API call to your backend
+      const response = await fetch("http://localhost:5000/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        login(data); // Auto-login after signup
+        setSuccess(true);
+        window.scrollTo(0, 0); // Scroll to top
+
+        // Redirect to login page after 2 seconds
+        setTimeout(() => {
+          navigate("/login");
+        }, 2000);
+      } else {
+        setError(data.message || "Signup failed.");
+      }
+    } catch (err) {
+      setError("An error occurred during signup.");
+    }
   }
 
   return (
     <div className="auth-container">
       <h2>Sign Up</h2>
+      {error && <div className="alert alert-danger">{error}</div>}
+      {success && (
+        <div className="alert alert-success">
+          Yay! You've signed up successfully. Redirecting to the login page...
+        </div>
+      )}
+
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="name" className="form-label">
@@ -29,6 +76,7 @@ const Signup = () => {
             required
           />
         </div>
+
         <div className="mb-3">
           <label htmlFor="email" className="form-label">
             Email Address
@@ -42,6 +90,7 @@ const Signup = () => {
             required
           />
         </div>
+
         <div className="mb-3">
           <label htmlFor="password" className="form-label">
             Password
@@ -55,16 +104,32 @@ const Signup = () => {
             required
           />
         </div>
-        <button type="submit" className="btn btn-success">
+
+        <div className="mb-3">
+          <label htmlFor="confirmPassword" className="form-label">
+            Confirm Password
+          </label>
+          <input
+            type="password"
+            className="form-control"
+            id="confirmPassword"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+          />
+        </div>
+
+        <button type="submit" className="btn btn-success w-100">
           Sign Up
         </button>
       </form>
-      <p className="mt-3">
+
+      <p className="mt-3 text-center">
         Already have an account? <Link to="/login">Login</Link>
       </p>
     </div>
-  )
+  );
 }
 
-export default Signup
+export default Signup;
 
