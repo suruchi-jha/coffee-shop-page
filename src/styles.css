@@ -91,21 +91,24 @@ h3 {
   z-index: 1000;
 }
 
-.navbar.scrolled {
-  background-color: rgba(255, 255, 255, 0.9); 
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
 .navbar a {
   color: white;
   transition: color 0.3s ease;
 }
 
+/* Change link color when hovered (before scrolling) */
+.navbar a:hover {
+  color: #ffcc00; /* Yellow on hover */
+}
+
+/* Navbar after scrolling */
 .navbar.scrolled a {
   color: #333; /* Darker text after scroll */
 }
-.nav-item:hover {
-  text-decoration-color: #6b4f4f;
+
+/* Change link color when hovered (after scrolling) */
+.navbar.scrolled a:hover {
+  color: #8d8486; /* Orange hover color after scroll */
 }
 
 /******************** Parallax effect **************************/
