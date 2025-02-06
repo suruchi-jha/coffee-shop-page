@@ -1,7 +1,7 @@
 import React from "react"
 import { useState } from "react"
 import { useAuth } from "../context/AuthContext"
-
+import { Link } from "react-router-dom"
 
 function Order () {
   const [name, setName] = useState("");
@@ -72,13 +72,13 @@ function Order () {
         <div className="text-center">
           <h2>Place Your Order</h2>
           <p>Please login or sign up to place an order.</p>
-          <a href="#login" className="btn btn-secondary">
+          <Link to="/login" className="btn btn-secondary">
             Login
-          </a>
+          </Link>
           <p> or </p>
-          <a href="#signup" className="btn btn-secondary">
+          <Link to="/signup" className="btn btn-secondary">
             Sign Up
-          </a>
+          </Link>
         </div>
       </section>
     )
