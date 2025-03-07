@@ -15,6 +15,7 @@ function Signup() {
   const navigate = useNavigate()
   const { login } = useAuth()
 
+  const API_URL = "https://server-coffeeshop.onrender.com/api/auth/register";
   const handleSubmit = async (e) => {
     e.preventDefault()
     setError("")
@@ -27,7 +28,7 @@ function Signup() {
 
     try {
       // Here you would typically make an API call to your backend
-      const response = await fetch("http://localhost:5000/api/auth/register", {
+      const response = await fetch(API_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -38,6 +39,7 @@ function Signup() {
       const data = await response.json()
 
       if (response.ok) {
+        localStorage.setItem("user", JSON.stringify(data));
         login(data); // Auto-login after signup
         setSuccess(true);
         window.scrollTo(0, 0); // Scroll to top

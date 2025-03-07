@@ -1,44 +1,22 @@
-import React from "react"
-import { useState } from "react"
-import { useAuth } from "../context/AuthContext"
-import { Link } from "react-router-dom"
+'use client';
 
-function Order () {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [category, setCategory] = useState("");
-  const [items, setItems] = useState([]);
-  const [quantity, setQuantity] = useState(1);
-  const [notes, setNotes] = useState("");
+import React, { useState } from "react";
+import { useAuth } from "../context/AuthContext";
+import { useCart } from "../context/CartContext";
+import { Link } from "react-router-dom";
+import Cart from "./cart";
 
-  const categoryItems = {
-    coffee: ["Espresso", "Cappuccino", "Latte", "Cold Brew", "Iced Americano"],
-    bakery: ["Croissant", "Muffin", "Bagel", "Scone", "Chocolate Cake"],
-    specialty: ["Pumpkin Spice Latte", "Affogato", "Irish Coffee"],
-    vegan: ["Vegan Brownie", "Almond Milk Latte", "Vegan Croissant"],
-  };
+function Order() {
+  const { user } = useAuth();
+  const { cart, cartTotal, clearCart } = useCart();
+  const [orderPlaced, setOrderPlaced] = useState(false);
 
-  const { user } = useAuth()
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    category: "",
-    items: [],
-    quantity: 1,
-    notes: "",
-  })
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
+  const handleCheckout = async () => {
     if (!user) {
-      // Scroll to login section if user is not authenticated
-      document.getElementById("login").scrollIntoView({ behavior: "smooth" })
-      return
+      alert("Please log in to place an order");
+      return;
     }
 
-    // Handle order submission
     try {
       const response = await fetch("http://localhost:5000/api/orders", {
         method: "POST",
@@ -46,24 +24,31 @@ function Order () {
           "Content-Type": "application/json",
           Authorization: `Bearer ${user.token}`,
         },
-        body: JSON.stringify(formData),
-      })
+        body: JSON.stringify({
+          items: cart,
+          total: cartTotal,
+        }),
+      });
 
       if (response.ok) {
-        alert("Order placed successfully!")
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          category: "",
-          items: [],
-          quantity: 1,
-          notes: "",
-        })
+        setOrderPlaced(true);
+        clearCart();
+      } else {
+        alert("Failed to place order. Please try again.");
       }
     } catch (error) {
-      console.error("Error placing order:", error)
+      console.error("Error placing order:", error);
+      alert("An error occurred. Please try again later.");
     }
+  };
+
+  if (orderPlaced) {
+    return (
+      <section id="order" className="container-lg order-container py-5">
+        <h2>Thank you for your order!</h2>
+        <p>Your order has been placed successfully.</p>
+      </section>
+    );
   }
 
   if (!user) {
@@ -81,7 +66,7 @@ function Order () {
           </Link>
         </div>
       </section>
-    )
+    );
   }
 
   return (
@@ -89,130 +74,19 @@ function Order () {
       <div className="row">
         <div className="col-12 text-center mb-4">
           <h2 className="cite-font-big">Place Your Order!</h2>
-          <p className="text-muted">Fill out the form below to order your favorite treats and drinks!</p>
+          <p className="text-muted">Use the buttons in our menu to order your favorite treats and drinks!</p>
         </div>
         <div className="col-12 col-md-8 mx-auto">
-          <form onSubmit={handleSubmit}>
-            <div className="mb-3">
-              <label htmlFor="orderName" className="form-label">
-                Your Name
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="orderName"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="orderEmail" className="form-label">
-                Email Address
-              </label>
-              <input
-                type="email"
-                className="form-control"
-                id="orderEmail"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="orderPhone" className="form-label">
-                Phone Number
-              </label>
-              <input
-                type="tel"
-                className="form-control"
-                id="orderPhone"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                required
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="categorySelect" className="form-label">
-                Select Category
-              </label>
-              <select
-                className="form-select"
-                id="categorySelect"
-                value={category}
-                onChange={(e) => {
-                  setCategory(e.target.value);
-                  setItems([]);
-                }}
-                required
-              >
-                <option value="" disabled>
-                  Choose a category
-                </option>
-                <option value="coffee">Coffee & Beverages</option>
-                <option value="bakery">Bakery</option>
-                <option value="specialty">Specialty Items</option>
-                <option value="vegan">Vegan Options</option>
-              </select>
-            </div>
-            <div className="mb-3">
-              <label htmlFor="itemSelect" className="form-label">
-                Select Your Items
-              </label>
-              <select
-                className="form-select"
-                id="itemSelect"
-                multiple
-                value={items}
-                onChange={(e) => setItems(Array.from(e.target.selectedOptions, (option) => option.value))}
-                required
-              >
-                {category ? (
-                  categoryItems[category].map((item, index) => (
-                    <option key={index} value={item}>{item}</option>
-                  ))
-                ) : (
-                  <option value="" disabled>Select a category first</option>
-                )}
-                {/* You would populate this based on the selected category */}
-              </select>
-              <small className="text-muted">Hold down Ctrl (Windows) / Command (Mac) to select multiple items.</small>
-            </div>
-            <div className="mb-3">
-              <label htmlFor="orderQuantity" className="form-label">
-                Quantity
-              </label>
-              <input
-                type="number"
-                className="form-control"
-                id="orderQuantity"
-                value={quantity}
-                onChange={(e) => setQuantity(Number(e.target.value))}
-                min="1"
-                required
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="orderNotes" className="form-label">
-                Special Instructions
-              </label>
-              <textarea
-                className="form-control"
-                id="orderNotes"
-                rows={3}
-                value={notes}
-                onChange={(e) => setNotes(e.target.value)}
-              ></textarea>
-            </div>
-            <button type="submit" className="btn btn-primary w-100">
-              Submit Order
+          <Cart />
+          {cart.length > 0 && (
+            <button className="btn btn-primary w-100 mt-3" onClick={handleCheckout}>
+              Checkout
             </button>
-          </form>
+          )}
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Order
-
+export default Order;

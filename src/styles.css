@@ -285,6 +285,88 @@ form{
   background-color: #6b4f4f;
 }
 
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+
+/* Add these styles to your existing CSS file */
+
+/* Cart Styles */
+.cart {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.item-name {
+  flex-grow: 1;
+}
+
+.item-price {
+  margin: 0 10px;
+}
+
+.quantity-input {
+  width: 50px;
+  text-align: center;
+  margin: 0 10px;
+}
+
+.cart-total {
+  text-align: right;
+  margin-top: 20px;
+  font-size: 1.2em;
+}
+
+/* Menu Styles */
+.menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  gap: 10px; /* Adds spacing between elements */
+}
+
+.menu-item-price {
+  margin-right: 10px; /* Adds space between price and button */
+  font-weight: bold;
+}
+
+.add-to-cart-btn {
+  margin-left: 10px; /* Ensures button is not too close */
+  padding: 5px 10px;
+  font-size: 0.9rem;
+  background-color: #A64B2A; /* Adjust color if needed */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #6F3A15;
+}
+
+.checkout-btn {
+  margin-top: 20px;
+}
+
 /* Link styling */
 p {
   text-align: center;

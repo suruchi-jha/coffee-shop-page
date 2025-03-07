@@ -1,6 +1,53 @@
-import React from "react"
+'use client';
 
-const Menu= () => {
+import React from "react";
+import { useCart } from '../context/CartContext';
+
+const menuItems = [
+  { id: 1, name: 'Espresso', price: 3.50, category: 'Coffee & Beverages' },
+  { id: 2, name: 'Americano', price: 4.00, category: 'Coffee & Beverages' },
+  { id: 3, name: 'Cappuccino', price: 4.75, category: 'Coffee & Beverages' },
+  { id: 4, name: 'Latte', price: 5.25, category: 'Coffee & Beverages' },
+  { id: 5, name: 'Iced Coffee', price: 5.50, category: 'Coffee & Beverages' },
+  { id: 6, name: 'Cold Brew', price: 5.75, category: 'Coffee & Beverages' },
+  { id: 7, name: 'Croissants', price: 4.55, category: 'Bakery' },
+  { id: 8, name: 'Bagels', price: 4.70, category: 'Bakery' },
+  { id: 9, name: 'Donuts', price: 5.35, category: 'Bakery' },
+  { id: 10, name: 'Brownies', price: 3.85, category: 'Bakery' },
+  { id: 11, name: 'Scones', price: 4.50, category: 'Bakery' },
+  { id: 12, name: 'Pumpkin Spice Latte', price: 6.00, category: 'Specialty Items' },
+  { id: 13, name: 'Chai Latte', price: 5.50, category: 'Specialty Items' },
+  { id: 14, name: 'Affogato', price: 6.25, category: 'Specialty Items' },
+  { id: 15, name: 'Ice Cream Sandwich', price: 4.50, category: 'Specialty Items' },
+  { id: 16, name: 'Vegan Brownies', price: 4.00, category: 'Vegan Options' },
+  { id: 17, name: 'Vegan Muffins', price: 3.50, category: 'Vegan Options' },
+  { id: 18, name: 'Oat Milk Latte', price: 5.50, category: 'Vegan Options' },
+];
+
+const Menu = () => {
+  const { addToCart } = useCart();
+
+  const renderMenuSection = (category) => {
+    const items = menuItems.filter(item => item.category === category);
+    return (
+      <div className="col col-12 col-md-6 move-up">
+        <h3 className="menu-list-title">{category}</h3>
+        <hr />
+        <ul>
+          {items.map(item => (
+            <li key={item.id} className="menu-item">
+            <p className="menu-item-name">{item.name}</p>
+            <span className="menu-item-price">${item.price.toFixed(2)}</span>
+            <button className="add-to-cart-btn" onClick={() => addToCart(item)}>
+              Add to Cart
+            </button>
+          </li>
+          ))}
+        </ul>
+      </div>
+    );
+  };
+
   return (
     <div className="container-lg middle-container" id="menu">
       <div className="row">
@@ -16,110 +63,17 @@ const Menu= () => {
           <p className="cursive-font-big">Our</p>
           <p className="cite-font-lg move-up-up">MENU</p>
           <div className="row">
-            <div className="col col-12 col-md-6 move-up">
-              <h3 className="menu-list-title">Coffee & Beverages</h3>
-              <hr />
-              <ul>
-                <li>
-                  <p className="list-item">Espresso</p>
-                  <span className="item-price">$3.50</span>
-                </li>
-                <li>
-                  <p>Americano</p>
-                  <span>$4.00</span>
-                </li>
-                <li>
-                  <p>Cappuccino</p>
-                  <span>$4.75</span>
-                </li>
-                <li>
-                  <p>Latte</p>
-                  <span>$5.25</span>
-                </li>
-                <li>
-                  <p>Iced Coffee</p>
-                  <span>$5.50</span>
-                </li>
-                <li>
-                  <p>Cold Brew</p>
-                  <span>$5.75</span>
-                </li>
-              </ul>
-            </div>
-            <div className="col col-12 col-md-6 move-up">
-              <h3 className="menu-list-title">Bakery</h3>
-              <hr />
-              <ul>
-                <li>
-                  <p className="list-item">Croissants</p>
-                  <span>$4.55</span>
-                </li>
-                <li>
-                  <p>Bagels</p>
-                  <span>$4.70</span>
-                </li>
-                <li>
-                  <p>Donuts</p>
-                  <span>$5.35</span>
-                </li>
-                <li>
-                  <p>Brownies</p>
-                  <span>$3.85</span>
-                </li>
-                <li>
-                  <p>Scones</p>
-                  <span>$4.50</span>
-                </li>
-              </ul>
-            </div>
+            {renderMenuSection('Coffee & Beverages')}
+            {renderMenuSection('Bakery')}
           </div>
           <div className="row mt-4">
-            <div className="col col-12 col-md-6 move-up">
-              <h3 className="menu-list-title">Specialty Items</h3>
-              <hr />
-              <ul>
-                <li>
-                  <p className="list-item">Pumpkin Spice Latte</p>
-                  <span>$6.00</span>
-                </li>
-                <li>
-                  <p>Chai Latte</p>
-                  <span>$5.50</span>
-                </li>
-                <li>
-                  <p>Affogato</p>
-                  <span>$6.25</span>
-                </li>
-                <li>
-                  <p>Ice Cream Sandwich</p>
-                  <span>$4.50</span>
-                </li>
-              </ul>
-            </div>
-            <div className="col col-12 col-md-6 move-up">
-              <h3 className="menu-list-title">Vegan Options</h3>
-              <hr />
-              <ul>
-                <li>
-                  <p className="list-item">Vegan Brownies</p>
-                  <span>$4.00</span>
-                </li>
-                <li>
-                  <p>Vegan Muffins</p>
-                  <span>$3.50</span>
-                </li>
-                <li>
-                  <p>Oat Milk Latte</p>
-                  <span>$5.50</span>
-                </li>
-              </ul>
-            </div>
+            {renderMenuSection('Specialty Items')}
+            {renderMenuSection('Vegan Options')}
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Menu
-
+export default Menu;
