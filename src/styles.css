@@ -293,45 +293,90 @@ form{
 }
 
 
-/* Add these styles to your existing CSS file */
-
-/* Cart Styles */
-.cart {
-  background-color: #f8f9fa;
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 20px;
+/* Shop Page Styles */
+.shop-container {
+  min-height: 100vh;
+  padding-top: 80px; /* Adjust based on your navbar height */
 }
 
-.cart-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-  padding: 10px;
-  background-color: #fff;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+.product-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(0,0,0,0.1);
+  height: 100%;
 }
 
-.item-name {
-  flex-grow: 1;
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-.item-price {
-  margin: 0 10px;
+.product-card .card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+
+.product-card .card-title{
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.price-text {
+  font-weight: bold;
+  color: #8b5e34;
+  font-size: 1.1rem;
+}
+
+.category-filter {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1rem;
 }
 
 .quantity-input {
-  width: 50px;
+  width: 60px;
   text-align: center;
-  margin: 0 10px;
 }
 
-.cart-total {
-  text-align: right;
-  margin-top: 20px;
-  font-size: 1.2em;
+/* Cart Styles */
+.cart-item {
+  transition: background-color 0.2s ease;
+}
+
+.cart-item:hover {
+  background-color: #f8f9fa;
+}
+
+#cart-section {
+  scroll-margin-top: 100px;
+}
+
+.cart-sidebar {
+  position: sticky;
+  top: 100px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 1.5rem;
+}
+
+.cart {
+  margin-bottom: 0;
+}
+
+.cart-item {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.quantity-input {
+  width: 60px;
+  text-align: center;
+  padding: 0.25rem;
+}
+
+/* Button styles */
+.btn-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
 }
 
 /* Menu Styles */
@@ -441,5 +486,12 @@ li {
   .bottom-container {
     padding-left: 100px;
     padding-right: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cart-sidebar {
+    position: static;
+    margin-top: 2rem;
   }
 }

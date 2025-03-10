@@ -9,6 +9,7 @@ import Contact from "./Components/contact"
 import Login from "./Components/login"
 import Signup from "./Components/signup"
 import Footer from "./Components/footer"
+import ShopPage from "./Components/ShopPage"
 import "./styles.css"
 
 const MainContent = () => (
@@ -27,11 +28,14 @@ const App = () => {
     <Router>
       <div className="App">
         <Header />
+        <main>
         <Routes>
           <Route path="/" element={<MainContent />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/shop" element={<ShopPage />} />
         </Routes>
+        </main>
         <Footer />
       </div>
     </Router>

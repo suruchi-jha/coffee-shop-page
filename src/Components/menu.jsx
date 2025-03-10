@@ -1,7 +1,7 @@
 'use client';
 
 import React from "react";
-import { useCart } from '../context/CartContext';
+
 
 const menuItems = [
   { id: 1, name: 'Espresso', price: 3.50, category: 'Coffee & Beverages' },
@@ -16,7 +16,7 @@ const menuItems = [
   { id: 10, name: 'Brownies', price: 3.85, category: 'Bakery' },
   { id: 11, name: 'Scones', price: 4.50, category: 'Bakery' },
   { id: 12, name: 'Pumpkin Spice Latte', price: 6.00, category: 'Specialty Items' },
-  { id: 13, name: 'Chai Latte', price: 5.50, category: 'Specialty Items' },
+  { id: 13, name: 'Chai ', price: 5.50, category: 'Specialty Items' },
   { id: 14, name: 'Affogato', price: 6.25, category: 'Specialty Items' },
   { id: 15, name: 'Ice Cream Sandwich', price: 4.50, category: 'Specialty Items' },
   { id: 16, name: 'Vegan Brownies', price: 4.00, category: 'Vegan Options' },
@@ -25,7 +25,7 @@ const menuItems = [
 ];
 
 const Menu = () => {
-  const { addToCart } = useCart();
+  
 
   const renderMenuSection = (category) => {
     const items = menuItems.filter(item => item.category === category);
@@ -38,9 +38,6 @@ const Menu = () => {
             <li key={item.id} className="menu-item">
             <p className="menu-item-name">{item.name}</p>
             <span className="menu-item-price">${item.price.toFixed(2)}</span>
-            <button className="add-to-cart-btn" onClick={() => addToCart(item)}>
-              Add to Cart
-            </button>
           </li>
           ))}
         </ul>

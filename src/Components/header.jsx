@@ -4,10 +4,12 @@ import { useAuth } from "../context/AuthContext"
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"
 import { useLocation } from "react-router-dom";
+import { useCart } from "../context/CartContext";
 
 
 function Header () {
   const { user, logout } = useAuth()
+  const { cart } = useCart();
   const navigate = useNavigate()
   const location = useLocation(); 
   const [scrolled, setScrolled] = useState(false);
@@ -31,7 +33,9 @@ function Header () {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const isAuthPage = location.pathname === "/login" || location.pathname === "/signup";
+  const isAuthPage = location.pathname === "/login" || location.pathname === "/signup" || location.pathname === "/shop";
+  
+  const cartItemCount = cart.reduce((total, item) => total + item.quantity, 0);
 
   return (
     <header>
@@ -66,10 +70,13 @@ function Header () {
                 </HashLink>
               </li>
               <li className="nav-item px-3">
-                <HashLink smooth className="nav-link" to="/#order" data-full-text="ORDER">
-                  Order
-                </HashLink>
-              </li>
+                <Link className="nav-link" to="/shop" data-full-text="SHOP">
+                  Shop
+                  {cartItemCount > 0 && (
+                    <span className="badge bg-primary ms-1">{cartItemCount}</span>
+                  )}
+                </Link>
+                </li>
               <li className="nav-item px-3">
                 <HashLink smooth className="nav-link" to="/#contact" data-full-text="CONTACT">
                   Contact
@@ -78,7 +85,7 @@ function Header () {
               {user ? (
                 <>
                   <li className="nav-item px-3">
-                    <span className="nav-link">Welcome, {user.name}</span>
+                    <span className="nav-link">Welcome, {user.name || user.email}</span>
                   </li>
                   <li className="nav-item px-3">
                     <button className="nav-link btn btn-link" onClick={logout}>
