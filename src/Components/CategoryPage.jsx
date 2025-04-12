@@ -191,9 +191,10 @@ const CategoryPage = () => {
           <div className="text-center">
             <h2>{categoryName}</h2>
             <p>Please login or sign up to view products and place orders.</p>
-            <Link to="/login" className="btn btn-primary me-2">
+            <Link to="/login" className="btn btn-secondary me-2">
               Login
             </Link>
+            <p>or</p>
             <Link to="/signup" className="btn btn-secondary">
               Sign Up
             </Link>
