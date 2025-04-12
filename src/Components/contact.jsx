@@ -1,7 +1,8 @@
-import React from "react"
+"use client"
 import { useState } from "react"
+import AnimatedSection from "./AnimatedSection"
 
-const Contact= () => {
+const Contact = () => {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [subject, setSubject] = useState("")
@@ -16,32 +17,36 @@ const Contact= () => {
   return (
     <div className="container-lg bottom-container" id="contact">
       <div className="row">
-        <div className="col col-lg-6 col-md-12 col-12 px-5">
+        <AnimatedSection className="col col-lg-6 col-md-12 col-12 px-5" animation="fade-right">
           <h2>GET IN TOUCH</h2>
           <br />
           <p>Thank you for visiting our little coffee shop! Please let us know how we can serve you better!</p>
           <br />
-          <p>
-            <i className="fa-solid fa-location-dot"></i>
-            <a
-              style={{ textDecoration: "none", color: "#A64B2A" }}
-              href="https://www.google.com/maps/place/Starbucks/@28.5283383,77.2192946,17z/data=!3m1!4b1!4m6!3m5!1s0x390ce18b1d0aa65b:0x5979a8534ee317c9!8m2!3d28.5283383!4d77.2192946!16s%2Fg%2F1hm3hdhvz?entry=ttu&g_ep=EgoyMDI0MTIxMS4wIKXMDSoASAFQAw%3D%3D"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {" "}
-              No G42, 45 & 46, Select Citywalk Mall, Saket District Centre, District Centre, Sector 6, Pushp Vihar, New
-              Delhi, Delhi 110017
-            </a>
-          </p>
-          <p>
-            <i className="fa-solid fa-phone"></i>
-            <a style={{ textDecoration: "none", color: "#A64B2A" }} href="tel: +91 99999 99999">
-              +91 99999 99999
-            </a>
-          </p>
-        </div>
-        <div className="col col-lg-6 col-md-12 col-12 px-5">
+          <AnimatedSection animation="fade-up" delay="delay-200">
+            <p>
+              <i className="fa-solid fa-location-dot"></i>
+              <a
+                style={{ textDecoration: "none", color: "#A64B2A" }}
+                href="https://www.google.com/maps/place/Starbucks/@28.5283383,77.2192946,17z/data=!3m1!4b1!4m6!3m5!1s0x390ce18b1d0aa65b:0x5979a8534ee317c9!8m2!3d28.5283383!4d77.2192946!16s%2Fg%2F1hm3hdhvz?entry=ttu&g_ep=EgoyMDI0MTIxMS4wIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {" "}
+                No G42, 45 & 46, Select Citywalk Mall, Saket District Centre, District Centre, Sector 6, Pushp Vihar,
+                New Delhi, Delhi 110017
+              </a>
+            </p>
+          </AnimatedSection>
+          <AnimatedSection animation="fade-up" delay="delay-300">
+            <p>
+              <i className="fa-solid fa-phone"></i>
+              <a style={{ textDecoration: "none", color: "#A64B2A" }} href="tel: +91 99999 99999">
+                +91 99999 99999
+              </a>
+            </p>
+          </AnimatedSection>
+        </AnimatedSection>
+        <AnimatedSection className="col col-lg-6 col-md-12 col-12 px-5" animation="fade-left">
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
               <label htmlFor="name" className="form-label">
@@ -97,11 +102,10 @@ const Contact= () => {
               Submit
             </button>
           </form>
-        </div>
+        </AnimatedSection>
       </div>
     </div>
   )
 }
 
 export default Contact
-

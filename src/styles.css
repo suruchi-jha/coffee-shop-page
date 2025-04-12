@@ -1,80 +1,81 @@
 /******************** Font **************************/
-
 h2 {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   text-align: center;
   font-size: 3rem;
 }
 
 h3 {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   font-size: 2rem;
 }
 
 .cite-font {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   font-size: 30px;
 }
 
-.cite-font-big{
-  font-family: 'Playfair Display', serif;
-  font-size:7rem;
+.cite-font-big {
+  font-family: "Playfair Display", serif;
+  font-size: 7rem;
   text-align: center;
-  position:relative;
-  bottom:30px;
+  position: relative;
+  bottom: 30px;
 }
 
 .cite-font-lg {
-  font-family: 'Playfair Display', serif;
-  font-size:5rem;
+  font-family: "Playfair Display", serif;
+  font-size: 5rem;
   text-align: center;
-  position:relative;
-  bottom:30px;
+  position: relative;
+  bottom: 30px;
 }
 
 .cite-font-mid {
-  font-family: 'Playfair Display', serif;
-  font-size:3rem;
+  font-family: "Playfair Display", serif;
+  font-size: 3rem;
   text-align: center;
-  position:relative;
-  bottom:70px;
+  position: relative;
+  bottom: 70px;
 }
 
 .content-font {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
   text-align: justify;
 }
 
 .square-font-big {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
   font-size: 4rem;
 }
 
-.cursive-font{
-  font-family: 'Herr Von Muellerhoff', cursive;
+.cursive-font {
+  font-family: "Herr Von Muellerhoff", cursive;
   font-size: 6rem;
   text-align: center;
-  color: #A64B2A;
-}
-.cursive-font-big {
-  font-family: 'Herr Von Muellerhoff', cursive;
-  font-size: 8rem;
-  text-align: center;
-  color: #A64B2A;
+  color: #a64b2a;
 }
 
+.cursive-font-big {
+  font-family: "Herr Von Muellerhoff", cursive;
+  font-size: 8rem;
+  text-align: center;
+  color: #a64b2a;
+}
 
 /******************** Position **************************/
 .move-up {
-  position:relative;
+  position: relative;
   bottom: 60px;
 }
+
 .move-up-up {
-  position:relative;
+  position: relative;
   bottom: 80px;
 }
+
 .move-up-lit {
-  position:relative;
+  position: relative;
   bottom: 50px;
 }
 
@@ -84,8 +85,8 @@ h3 {
 
 .navbar {
   transition: background-color 0.4s ease, backdrop-filter 0.4s ease;
-  background-color: rgba(255, 255, 255, 0.2); 
-  backdrop-filter: blur(10px); 
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
   padding: 15px 20px;
   box-shadow: none;
   z-index: 1000;
@@ -96,37 +97,30 @@ h3 {
   transition: color 0.3s ease;
 }
 
-/* Change link color when hovered (before scrolling) */
 .navbar a:hover {
-  color: #ffcc00; /* Yellow on hover */
+  color: #ffcc00;
 }
 
-/* Navbar after scrolling */
 .navbar.scrolled a {
-  color: #333; /* Darker text after scroll */
+  color: #333;
 }
 
-/* Change link color when hovered (after scrolling) */
 .navbar.scrolled a:hover {
-  color: #8d8486; /* Orange hover color after scroll */
+  color: #8d8486;
 }
 
 /******************** Parallax effect **************************/
 .parallax {
-  /* The image used */
   background-image: url("https://muertoscoffeeco.com/cdn/shop/articles/Why-Roast-Coffee-scaled_1000x.jpg?v=1592234291");
-
-  /* Set a specific height */
   min-height: 100vh;
-
-  /* Create the parallax scrolling effect */
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
+
 .main-title {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   font-size: 40px;
   position: absolute;
   top: 40%;
@@ -136,8 +130,9 @@ h3 {
   font-size: 5rem;
   font-weight: bold;
 }
-.tag-line{
-  font-family:'Source Sans Pro', serif;
+
+.tag-line {
+  font-family: "Source Sans Pro", serif;
   font-size: 15px;
   position: absolute;
   top: 50%;
@@ -149,13 +144,15 @@ h3 {
 }
 
 .align-right {
-  text-align:right;
+  text-align: right;
 }
+
 .padding-right {
-  margin-right: 30px
+  margin-right: 30px;
 }
+
 .vl {
-  border-left: 30px solid #F8ECD1;
+  border-left: 30px solid #f8ecd1;
   height: 100%;
   font-weight: bold;
 }
@@ -164,6 +161,7 @@ h3 {
 .top-container {
   padding-top: 70px;
 }
+
 /******login******/
 .auth-container {
   display: flex;
@@ -173,6 +171,7 @@ h3 {
   background-color: #f4f4f4;
   padding: 20px;
 }
+
 .auth-container form {
   background: white;
   padding: 30px;
@@ -181,22 +180,26 @@ h3 {
   max-width: 400px;
   width: 100%;
 }
+
 .auth-container h2 {
   text-align: center;
   margin-bottom: 20px;
   color: #6f4e37;
   font-weight: bold;
 }
+
 .auth-container .form-control {
   border-radius: 8px;
   padding: 12px;
   transition: all 0.3s ease;
 }
+
 .auth-container .form-control:focus {
   border-color: #8b5e34;
   box-shadow: 0 0 5px rgba(139, 94, 52, 0.5);
   outline: none;
 }
+
 .auth-container .btn-primary {
   background-color: #8b5e34;
   border: none;
@@ -206,44 +209,48 @@ h3 {
   border-radius: 8px;
   transition: background-color 0.3s ease;
 }
+
 .auth-container .btn-primary:hover {
   background-color: #6b4f4f;
 }
+
 .auth-container p {
   text-align: center;
   margin-top: 15px;
   font-size: 14px;
 }
+
 .auth-container a {
-  color: #A64B2A;
+  color: #a64b2a;
   text-decoration: none;
   font-weight: bold;
 }
+
 .auth-container a:hover {
   text-decoration: underline;
 }
+
 .auth-navbar {
-  background-color: white !important;  /* Make the navbar background white if needed */
-  color: black !important;             /* Make the text black */
+  background-color: white !important;
+  color: black !important;
 }
 
 .auth-navbar .nav-link,
 .auth-navbar .navbar-brand {
-  color: black !important;             /* Apply black color to links and brand */
+  color: black !important;
 }
 
-
 /**********forms**********/
-.container{
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; /* Full-screen height */
-  background-color: #f4f4f4; /* Soft background */
+  min-height: 100vh;
+  background-color: #f4f4f4;
   padding: 20px;
 }
 
-form{
+form {
   background: white;
   padding: 30px;
   border-radius: 10px;
@@ -285,29 +292,54 @@ form{
   background-color: #6b4f4f;
 }
 
-.list-item {
+/* Menu Styles */
+.menu-item {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   margin-bottom: 10px;
+  gap: 10px;
 }
 
+.menu-item-price {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.add-to-cart-btn {
+  margin-left: 10px;
+  padding: 5px 10px;
+  font-size: 0.9rem;
+  background-color: #a64b2a;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #6f3a15;
+}
+
+.checkout-btn {
+  margin-top: 20px;
+}
 
 /* Shop Page Styles */
 .shop-container {
   min-height: 100vh;
-  padding-top: 80px; /* Adjust based on your navbar height */
+  padding-top: 80px;
 }
 
 .product-card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid rgba(0,0,0,0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   height: 100%;
 }
 
 .product-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .product-card .card-img-top {
@@ -315,7 +347,7 @@ form{
   object-fit: cover;
 }
 
-.product-card .card-title{
+.product-card .card-title {
   font-size: 1rem;
   margin-bottom: 0.5rem;
 }
@@ -354,7 +386,7 @@ form{
   top: 100px;
   background: white;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   padding: 1.5rem;
 }
 
@@ -379,39 +411,6 @@ form{
   font-size: 0.875rem;
 }
 
-/* Menu Styles */
-.menu-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 10px;
-  gap: 10px; /* Adds spacing between elements */
-}
-
-.menu-item-price {
-  margin-right: 10px; /* Adds space between price and button */
-  font-weight: bold;
-}
-
-.add-to-cart-btn {
-  margin-left: 10px; /* Ensures button is not too close */
-  padding: 5px 10px;
-  font-size: 0.9rem;
-  background-color: #A64B2A; /* Adjust color if needed */
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.add-to-cart-btn:hover {
-  background-color: #6F3A15;
-}
-
-.checkout-btn {
-  margin-top: 20px;
-}
-
 /* Link styling */
 p {
   text-align: center;
@@ -428,6 +427,317 @@ a:hover {
   text-decoration-color: #333;
 }
 
+/* Apple-style Animation Classes */
+/* Base animation class */
+[class*="fade-"] {
+  opacity: 0;
+  will-change: transform, opacity;
+  transition-property: transform, opacity;
+  transition-duration: 0.8s;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[class*="fade-"].fade-in {
+  opacity: 1;
+  transform: translate(0) scale(1);
+}
+
+/* Fade up - subtle upward movement */
+.fade-up {
+  transform: translateY(30px);
+}
+
+/* Fade down - subtle downward movement */
+.fade-down {
+  transform: translateY(-30px);
+}
+
+/* Fade left - subtle movement from right to left */
+.fade-left {
+  transform: translateX(30px);
+}
+
+/* Fade right - subtle movement from left to right */
+.fade-right {
+  transform: translateX(-30px);
+}
+
+/* Fade in place - just opacity change */
+.fade-in-place {
+  transform: none;
+}
+
+/* Fade scale - subtle zoom effect */
+.fade-scale {
+  transform: scale(0.95);
+}
+
+/* Animation delays for staggered effects */
+.delay-100 {
+  transition-delay: 0.1s;
+}
+.delay-200 {
+  transition-delay: 0.2s;
+}
+.delay-300 {
+  transition-delay: 0.3s;
+}
+.delay-400 {
+  transition-delay: 0.4s;
+}
+.delay-500 {
+  transition-delay: 0.5s;
+}
+
+/* Footer Styles */
+.footer-container {
+  background-color: #212529; /* Dark blue color */
+  color: #fff;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 40px 0 20px;
+  font-size: 0.9rem;
+  margin-top: 40px;
+  width: 100%;
+  z-index: 10;
+}
+
+.footer-inner-container {
+  max-width: 100%;
+  padding: 0 1rem;
+  background-color: transparent;
+}
+
+.footer-title {
+  font-family: "Playfair Display", serif;
+  font-size: 1.1rem;
+  margin-bottom: 1 rem;
+  position: relative;
+  display: inline-block;
+}
+
+.footer-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 40px;
+  height: 2px;
+  background-color: #a64b2a;
+}
+
+.footer-text {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.social-links {
+  display: flex;
+  gap: 12px;
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  background-color: #a64b2a;
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+.footer-links,
+.footer-hours {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li,
+.footer-hours li {
+  margin-bottom: 8px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+  position: relative;
+}
+
+.footer-links a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  transition: width 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #fff;
+}
+
+.footer-links a:hover::after {
+  width: 100%;
+}
+
+.footer-contact p {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.footer-contact i {
+  color: #a64b2a;
+  width: 15px;
+}
+
+.footer-divider {
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.1);
+  margin: 15px 0;
+}
+
+.copyright {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.8rem;
+  margin-bottom: 0;
+  text-align: left;
+}
+
+.policy-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+.policy-links li a {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.8rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.policy-links li a:hover {
+  color: #fff;
+}
+
+/* Category Cards */
+.category-card {
+  position: relative;
+  height: 250px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.category-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.category-card:hover img {
+  transform: scale(1.05);
+}
+
+.category-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  padding: 20px;
+  color: white;
+}
+
+.category-overlay h3 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.section-title {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 40px;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  width: 50px;
+  height: 2px;
+  background-color: #a64b2a;
+  transform: translateX(-50%);
+}
+
+.view-all-link {
+  display: inline-block;
+  margin-top: 20px;
+  color: #a64b2a;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.view-all-link:hover {
+  color: #8b5e34;
+  text-decoration: underline;
+}
+
+.special-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #a64b2a;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .policy-links {
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .copyright {
+    text-align: center;
+  }
+
+  .category-card {
+    height: 200px;
+  }
+}
+
 /******************** Buttons **************************/
 .btn {
   -webkit-border-radius: 8;
@@ -435,13 +745,13 @@ a:hover {
   border-radius: 5px;
   color: #ffffff;
   font-size: 1rem;
-  background: #A64B2A;
+  background: #a64b2a;
   padding: 5px 15px 5px 15px;
   text-decoration: none;
 }
 
 .btn:hover {
-  background: #E6B325;
+  background: #e6b325;
   text-decoration: none;
   color: #ffffff;
 }
@@ -459,9 +769,10 @@ a:hover {
 .image-col {
   align-self: center;
 }
+
 ul {
   list-style-type: none;
-  padding-left: 0
+  padding-left: 0;
 }
 
 li {
@@ -480,7 +791,7 @@ li {
 }
 
 /******************** Laptop User **************************/
-@media screen and (min-width: 992px){
+@media screen and (min-width: 992px) {
   .top-container,
   .middle-container,
   .bottom-container {

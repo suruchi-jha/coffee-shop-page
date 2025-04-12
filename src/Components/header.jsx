@@ -33,7 +33,8 @@ function Header () {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const isAuthPage = location.pathname === "/login" || location.pathname === "/signup" || location.pathname === "/shop";
+  const isAuthPage = location.pathname === "/login" || location.pathname === "/signup" || location.pathname === "/shop" || location.pathname === "/category/coffee-&-beverages"
+                  || location.pathname === "/category/bakery" || location.pathname === "/category/specialty-items"|| location.pathname === "/category/vegan-options";
   
   const cartItemCount = cart.reduce((total, item) => total + item.quantity, 0);
 

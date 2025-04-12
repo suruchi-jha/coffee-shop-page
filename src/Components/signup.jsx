@@ -1,4 +1,4 @@
-'use client';
+"use client"
 
 import { useState } from "react"
 import { Link } from "react-router-dom"
@@ -6,7 +6,7 @@ import { useAuth } from "../context/AuthContext"
 import { useNavigate } from "react-router-dom"
 
 function Signup() {
-  const [name, setName] = useState("");
+  const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
@@ -15,7 +15,7 @@ function Signup() {
   const navigate = useNavigate()
   const { login } = useAuth()
 
-  const API_URL = "https://server-coffeeshop.onrender.com/api/auth/register";
+  const API_URL = "https://server-coffeeshop.onrender.com/api/auth/register"
   const handleSubmit = async (e) => {
     e.preventDefault()
     setError("")
@@ -33,26 +33,32 @@ function Signup() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ name, email, password }),
       })
 
       const data = await response.json()
 
       if (response.ok) {
-        localStorage.setItem("user", JSON.stringify(data));
-        login(data); // Auto-login after signup
-        setSuccess(true);
-        window.scrollTo(0, 0); // Scroll to top
+        localStorage.setItem("user", JSON.stringify(data))
+        login(data) // Auto-login after signup
+        setSuccess(true)
+        window.scrollTo(0, 0) // Scroll to top
 
         // Redirect to login page after 2 seconds
         setTimeout(() => {
-          navigate("/login");
-        }, 2000);
+          navigate("/login")
+        }, 2000)
       } else {
-        setError(data.message || "Signup failed.");
+        setError(data.message || "Signup failed.")
       }
     } catch (err) {
-      setError("An error occurred during signup.");
+      setError("An error occurred during signup.")
+    }
+  }
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleSubmit(e)
     }
   }
 
@@ -61,9 +67,7 @@ function Signup() {
       <h2>Sign Up</h2>
       {error && <div className="alert alert-danger">{error}</div>}
       {success && (
-        <div className="alert alert-success">
-          Yay! You've signed up successfully. Redirecting to the login page...
-        </div>
+        <div className="alert alert-success">Yay! You've signed up successfully. Redirecting to the login page...</div>
       )}
 
       <form onSubmit={handleSubmit}>
@@ -77,6 +81,7 @@ function Signup() {
             id="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            onKeyDown={handleKeyDown}
             required
           />
         </div>
@@ -91,6 +96,7 @@ function Signup() {
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            onKeyDown={handleKeyDown}
             required
           />
         </div>
@@ -105,6 +111,7 @@ function Signup() {
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            onKeyDown={handleKeyDown}
             required
           />
         </div>
@@ -119,6 +126,7 @@ function Signup() {
             id="confirmPassword"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
+            onKeyDown={handleKeyDown}
             required
           />
         </div>
@@ -132,8 +140,7 @@ function Signup() {
         Already have an account? <Link to="/login">Login</Link>
       </p>
     </div>
-  );
+  )
 }
 
-export default Signup;
-
+export default Signup

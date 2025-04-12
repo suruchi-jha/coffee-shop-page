@@ -10,39 +10,39 @@ import Login from "./Components/login"
 import Signup from "./Components/signup"
 import Footer from "./Components/footer"
 import ShopPage from "./Components/ShopPage"
+import CategoryPage from "./Components/CategoryPage"
 import "./styles.css"
 
-const MainContent = () => (
-  <>
-    <Home />
-    <Menu />
-    <Order />
-    <Contact />
-  </>
-)
-
-const App = () => {
+function App() {
   return (
     <AuthProvider>
-    <CartProvider>
-    <Router>
-      <div className="App">
-        <Header />
-        <main>
-        <Routes>
-          <Route path="/" element={<MainContent />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/shop" element={<ShopPage />} />
-        </Routes>
-        </main>
-        <Footer />
-      </div>
-    </Router>
-    </CartProvider>
+      <CartProvider>
+        <Router>
+          <div className="App">
+            <Header />
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <>
+                    <Home />
+                    <Menu />
+                    <Order />
+                    <Contact />
+                  </>
+                }
+              />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/shop" element={<ShopPage />} />
+              <Route path="/category/:categoryId" element={<CategoryPage />} />
+            </Routes>
+            <Footer />
+          </div>
+        </Router>
+      </CartProvider>
     </AuthProvider>
   )
 }
 
 export default App
-

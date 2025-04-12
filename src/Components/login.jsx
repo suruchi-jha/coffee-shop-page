@@ -1,4 +1,4 @@
-'use client';
+"use client"
 
 import { useState } from "react"
 import { Link } from "react-router-dom"
@@ -11,11 +11,11 @@ function Login() {
   const [error, setError] = useState("")
   const navigate = useNavigate()
   const { login } = useAuth()
-  
-  const API_URL = "https://server-coffeeshop.onrender.com/api/auth/login";
+
+  const API_URL = "https://server-coffeeshop.onrender.com/api/auth/login"
   const handleSubmit = async (e) => {
     e.preventDefault()
-    setError('');
+    setError("")
 
     try {
       // Here you would typically make an API call to your backend
@@ -42,6 +42,12 @@ function Login() {
     }
   }
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleSubmit(e)
+    }
+  }
+
   return (
     <div className="auth-container">
       <h2>Login</h2>
@@ -57,6 +63,7 @@ function Login() {
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            onKeyDown={handleKeyDown}
             required
           />
         </div>
@@ -70,6 +77,7 @@ function Login() {
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            onKeyDown={handleKeyDown}
             required
           />
         </div>
@@ -85,4 +93,3 @@ function Login() {
 }
 
 export default Login
-
