@@ -2,41 +2,41 @@ import { Link } from "react-router-dom"
 import AnimatedSection from "./AnimatedSection"
 
 const Home = () => {
-  // Category data
+  // Category data with actual image paths
   const categories = [
     {
       id: 1,
       name: "Coffee & Beverages",
-      image: "/assets/coffee-category.jpg",
+      image: "/assets/main-coffee.webp",
       description: "Explore our range of handcrafted coffees and refreshing beverages",
     },
     {
       id: 2,
       name: "Bakery",
-      image: "/assets/bakery-category.jpg",
+      image: "/assets/placeholder-bakery.webp",
       description: "Freshly baked pastries, breads, and sweet treats",
     },
     {
       id: 3,
       name: "Specialty Items",
-      image: "/assets/specialty-category.jpg",
+      image: "/assets/speciality-placeholder.webp",
       description: "Unique coffee creations and seasonal specialties",
     },
     {
       id: 4,
       name: "Vegan Options",
-      image: "/assets/vegan-category.jpg",
+      image: "/assets/placeholder-vegan.jpg",
       description: "Plant-based treats and dairy-free alternatives",
     },
   ]
 
-  // Today's specials
+  // Today's specials with actual image paths
   const todaysSpecials = [
     {
       id: 1,
       name: "Caramel Macchiato",
       price: 5.95,
-      image: "/assets/caramel-macchiato.jpg",
+      image: "/assets/caramel-macchiato.webp",
       description: "Rich espresso with vanilla-flavored syrup, topped with caramel",
     },
     {
@@ -62,7 +62,7 @@ const Home = () => {
     },
   ]
 
-  // Placeholder image function
+  // Fallback image function
   const getPlaceholderImage = (name) => {
     return `/placeholder.svg?height=250&width=400&text=${encodeURIComponent(name)}`
   }
@@ -111,12 +111,12 @@ const Home = () => {
             <div className="col-md-3 col-sm-6" key={category.id}>
               <AnimatedSection animation="fade-up" delay={`delay-${(index + 1) * 100}`}>
                 <Link
-                  to={`/category/${category.name.toLowerCase().replace(/\s+/g, "-")}`}
+                  to={`/category/${category.name.toLowerCase().replace(/\s+/g, "-").replace(/&/g, "-")}`}
                   className="text-decoration-none"
                 >
                   <div className="category-card">
                     <img
-                      src={category.image || getPlaceholderImage(category.name)}
+                      src={category.image || "/placeholder.svg"}
                       alt={category.name}
                       onError={(e) => {
                         e.target.onerror = null
@@ -157,7 +157,7 @@ const Home = () => {
                   <div className="category-card">
                     <div className="special-badge">Special</div>
                     <img
-                      src={item.image || getPlaceholderImage(item.name)}
+                      src={item.image || "/placeholder.svg"}
                       alt={item.name}
                       onError={(e) => {
                         e.target.onerror = null

@@ -11,11 +11,15 @@ function Login() {
   const [error, setError] = useState("")
   const navigate = useNavigate()
   const { login } = useAuth()
+  const [clicked, setClicked] = useState(false)
 
   const API_URL = "https://server-coffeeshop.onrender.com/api/auth/login"
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     setError("")
+    setClicked(true)
+    setTimeout(() => setClicked(false), 150)
 
     try {
       // Here you would typically make an API call to your backend
@@ -42,12 +46,6 @@ function Login() {
     }
   }
 
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      handleSubmit(e)
-    }
-  }
-
   return (
     <div className="auth-container">
       <h2>Login</h2>
@@ -63,7 +61,6 @@ function Login() {
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            onKeyDown={handleKeyDown}
             required
           />
         </div>
@@ -77,11 +74,18 @@ function Login() {
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            onKeyDown={handleKeyDown}
             required
           />
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button
+          type="submit"
+          className="btn btn-primary w-100"
+          style={{
+            backgroundColor: clicked ? "#e6b325" : undefined,
+            borderColor: clicked ? "#e6b325" : undefined,
+            transition: "background-color 0.15s ease",
+          }}
+        >
           Login
         </button>
       </form>

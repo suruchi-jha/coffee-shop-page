@@ -12,14 +12,17 @@ function Signup() {
   const [confirmPassword, setConfirmPassword] = useState("")
   const [error, setError] = useState("")
   const [success, setSuccess] = useState(false)
+  const [clicked, setClicked] = useState(false)
   const navigate = useNavigate()
-  const { login } = useAuth()
+  const { login, logout } = useAuth()
 
   const API_URL = "https://server-coffeeshop.onrender.com/api/auth/register"
   const handleSubmit = async (e) => {
     e.preventDefault()
     setError("")
     setSuccess(false)
+    setClicked(true) // Flash color
+    setTimeout(() => setClicked(false), 150)
 
     if (password !== confirmPassword) {
       setError("Passwords do not match")
@@ -39,10 +42,13 @@ function Signup() {
       const data = await response.json()
 
       if (response.ok) {
+        // Store user data but don't login yet
         localStorage.setItem("user", JSON.stringify(data))
-        login(data) // Auto-login after signup
         setSuccess(true)
         window.scrollTo(0, 0) // Scroll to top
+
+        // Log out the user before redirecting to login page
+        logout()
 
         // Redirect to login page after 2 seconds
         setTimeout(() => {
@@ -53,12 +59,6 @@ function Signup() {
       }
     } catch (err) {
       setError("An error occurred during signup.")
-    }
-  }
-
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      handleSubmit(e)
     }
   }
 
@@ -81,7 +81,6 @@ function Signup() {
             id="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            onKeyDown={handleKeyDown}
             required
           />
         </div>
@@ -96,7 +95,6 @@ function Signup() {
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            onKeyDown={handleKeyDown}
             required
           />
         </div>
@@ -111,7 +109,6 @@ function Signup() {
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            onKeyDown={handleKeyDown}
             required
           />
         </div>
@@ -126,12 +123,19 @@ function Signup() {
             id="confirmPassword"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            onKeyDown={handleKeyDown}
             required
           />
         </div>
 
-        <button type="submit" className="btn btn-success w-100">
+        <button
+          type="submit"
+          className="btn btn-success w-100"
+          style={{
+            backgroundColor: clicked ? "#e6b325" : undefined,
+            borderColor: clicked ? "#e6b325" : undefined,
+            transition: "background-color 0.15s ease, border-color 0.15s ease",
+          }}
+        >
           Sign Up
         </button>
       </form>

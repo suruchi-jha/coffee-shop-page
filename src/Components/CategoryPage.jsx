@@ -154,19 +154,19 @@ const allProducts = [
 
 // For placeholder images
 const getPlaceholderImage = (category) => {
-    switch (category) {
-      case "Coffee & Beverages":
-        return "/assets/main-coffee.webp"
-      case "Bakery":
-        return "/assets/placeholder-bakery.jpg"
-      case "Specialty Items":
-        return "/assets/placeholder-specialty.jpg"
-      case "Vegan Options":
-        return "/assets/placeholder-vegan.jpg"
-      default:
-        return "/assets/placeholder.jpg" // generic fallback
-    }
+  switch (category) {
+    case "Coffee & Beverages":
+      return "/assets/main-coffee.webp"
+    case "Bakery":
+      return "/assets/placeholder-bakery.jpg"
+    case "Specialty Items":
+      return "/assets/placeholder-specialty.jpg"
+    case "Vegan Options":
+      return "/assets/placeholder-vegan.jpg"
+    default:
+      return "/assets/placeholder.jpg" // generic fallback
   }
+}
 
 const CategoryPage = () => {
   const { categoryId } = useParams()
@@ -178,6 +178,7 @@ const CategoryPage = () => {
     .split("-")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ")
+    .replace("Coffee - Beverages", "Coffee & Beverages") // Fix for the & character in URL
 
   // Filter products by category
   const categoryProducts = allProducts.filter(
@@ -230,7 +231,7 @@ const CategoryPage = () => {
                   >
                     <div className="card h-100 product-card">
                       <img
-                        src={product.image}
+                        src={product.image || "/placeholder.svg"}
                         className="card-img-top"
                         alt={product.name}
                         height="200"
