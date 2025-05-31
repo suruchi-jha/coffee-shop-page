@@ -127,7 +127,7 @@ const products = [
     name: "Ice Cream Sandwich",
     price: 4.5,
     category: "Specialty Items",
-    image: "/assets/ice-cream-sandwich.webp",
+    image: "/assets/ice-cream.webp",
     description: "Creamy ice cream between soft cookies.",
   },
   {
